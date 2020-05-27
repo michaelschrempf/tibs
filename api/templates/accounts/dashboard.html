@@ -1,0 +1,39 @@
+{% extends 'accounts/base.html' %}
+
+{% load static %}
+
+
+{% block content %}
+
+
+    <div class="text">
+        <h1>Hi {{ employee.first_name }} {{ employee.family_name }} </h1>
+    </div>
+
+    <div class="text">
+        <p>Your last transaction was {{ transaction.booking.name }} at {{ transaction.timestamp }}</p>
+
+        <div id="map" style="height: 200px"></div>
+    </div>
+
+    <div class="text">
+        <p>Please choose your booking:</p>
+    </div>
+
+    {% for o in availableBookings %}
+        <tr>
+            <form id="AddBookingForm" method="POST"
+                  action="{% url 'addBooking' employeeId=employee.id bookingId=o.id %}">
+                {% csrf_token %}
+                <input type="hidden" name="employeeId" value="{{ employee.id }}">
+                <input type="hidden" name="bookingId" value="{{ o.id }}">
+                <input type="hidden" name="lng" id="lng" value="None">
+                <input type="hidden" name="lat" id="lat" value="None">
+                <button class="btn btn-lg btn-primary btn-block" type="submit">{{ o.name }}</button>
+            </form>
+        </tr>
+    {% endfor %}
+
+
+
+{% endblock content %}
