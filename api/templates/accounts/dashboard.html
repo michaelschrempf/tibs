@@ -16,12 +16,12 @@
         <div id="map" style="height: 200px"></div>
     </div>
 
-    <div class="text">
+    <div class="text" style="margin-top: 6pt">
         <p>Please choose your booking:</p>
     </div>
 
     {% for o in availableBookings %}
-        <tr>
+        <div class="mb-1">
             <form id="AddBookingForm" method="POST"
                   action="{% url 'addBooking' employeeId=employee.id bookingId=o.id %}">
                 {% csrf_token %}
@@ -29,9 +29,9 @@
                 <input type="hidden" name="bookingId" value="{{ o.id }}">
                 <input type="hidden" name="lng" id="lng" value="None">
                 <input type="hidden" name="lat" id="lat" value="None">
-                <button class="btn btn-lg btn-primary btn-block" type="submit">{{ o.name }}</button>
+                <button class="btn btn-lg btn-primary btn-block" style="margin: 1pt" type="submit">{{ o.name }}</button>
             </form>
-        </tr>
+        </div>
     {% endfor %}
 
 
