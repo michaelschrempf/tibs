@@ -12,7 +12,7 @@
     <div class="text">
         {% if transaction is not None %}
 
-        <p>Deine letzte Zeitbuchung war {{ transaction.booking.name }} um {{ transaction.timestamp }}</p>
+        <p>Deine letzte Zeitbuchung war {{ transaction.booking.name }} am {{ transaction.timestamp }}</p>
 {% endif %}
 
         <div id="map" style="height: 200px"></div>
