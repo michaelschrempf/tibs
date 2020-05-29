@@ -7,18 +7,18 @@
 
 
     <div class="text">
-        <h1>Hi {{ employee.first_name }} {{ employee.family_name }} </h1>
+        <h1>Guten Tag, {{ employee.first_name }} {{ employee.family_name }} </h1>
     </div>
     <div class="text">
         {% if transaction is not None %}
 
-        <p>Your last transaction was {{ transaction.booking.name }} at {{ transaction.timestamp }}</p>
+        <p>Deine letzte Zeitbuchung war {{ transaction.booking.name }} um {{ transaction.timestamp }}</p>
 {% endif %}
 
         <div id="map" style="height: 200px"></div>
     </div>
     <div class="text" style="margin-top: 6pt">
-        <p>Please choose your booking:</p>
+        <p>Bitte wähle deine nächste Zeitbuchung:</p>
     </div>
 
     {% for o in availableBookings %}
