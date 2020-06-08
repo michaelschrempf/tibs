@@ -5,7 +5,7 @@
 {% block content %}
 
     <div class="container text-center mb-5 mt-2 mr-1 ml-1">
-      <h1 class="jumbotron-heading">Please Sign-In!</h1>
+      <h1 class="jumbotron-heading">Melde dich an!</h1>
 
     </div>
 
@@ -14,17 +14,17 @@
         {% if form.errors %}
             <div class="alert alert-dismissible alert-warning">
                 <button type="button" class="close" data-dismiss="alert">×</button>
-                <h4 class="alert-heading">Username or Password is wrong!!</h4>
+                <h4 class="alert-heading">Dein Benutzername oder Passwort ist falsch!</h4>
             </div>
         {% endif %}
 
         <div class="form-label-group mb-1">
-            <input type="text" name="username" id="id_username" class="form-control" placeholder="Username" required=""
+            <input type="text" name="username" id="id_username" class="form-control" placeholder="Benutzername" required=""
                    autofocus="">
         </div>
 
         <div class="form-label-group mb-3">
-            <input type="password" name="password" id="id_password" class="form-control" placeholder="Password"
+            <input type="password" name="password" id="id_password" class="form-control" placeholder="Passwort"
                    required="">
         </div>
 

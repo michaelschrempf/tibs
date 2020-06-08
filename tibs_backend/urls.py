@@ -16,11 +16,14 @@ Including another URLconf
 from django.contrib import admin
 from django.contrib.auth.decorators import login_required
 from django.urls import include, path
+from django.shortcuts import redirect
+
+from api import views
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', login_required(include('api.urls'))),
+    path('', lambda request: redirect('accounts/', permanent=True)),
     path('users/', include('api.urls')),
     path('accounts/', include('accounts.urls'), name = 'accounts'),
 ]

@@ -11,6 +11,7 @@ class Employee(models.Model):
     def __str__(self):
         return self.first_name + " " + self.family_name
 
+
 class Transaction(models.Model):
     timestamp = models.DateTimeField(auto_now_add=True)
     employee = models.ForeignKey("Employee", on_delete=models.CASCADE)
@@ -21,9 +22,44 @@ class Transaction(models.Model):
     def __str__(self):
         return self.employee.family_name + "_" + self.booking.name + "_" + str(self.timestamp)
 
+
 class Booking(models.Model):
     name = models.CharField(max_length=200)
     bookings = models.ManyToManyField("Booking", blank=True)
 
     def __str__(self):
         return self.name
+
+
+class MessageType(models.Model):
+    name = models.CharField(max_length=200)
+
+    def __str__(self):
+        return self.name
+
+
+class MessageState(models.Model):
+    name = models.CharField(max_length=200)
+
+    def __str__(self):
+        return self.name
+
+
+class Message(models.Model):
+    message = models.CharField(max_length=2000)
+    idName = models.CharField(max_length=200, null=True, blank=True)
+    messageType = models.ForeignKey("MessageType", on_delete=models.CASCADE, null=True, blank=True)
+
+    def __str__(self):
+        return self.message
+
+class MessageEmployee(models.Model):
+    employee = models.ForeignKey("Employee", on_delete=models.CASCADE)
+    message = models.ForeignKey("Message", on_delete=models.CASCADE)
+    messageState = models.ForeignKey("MessageState", on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.employee.family_name + ": " + self.message.message
+
+
+
