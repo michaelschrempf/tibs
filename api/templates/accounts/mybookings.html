@@ -1,10 +1,28 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+{% extends 'accounts/base.html' %}
+
+{% load static %}
+
+
+{% block content %}
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Date</th>
+      <th scope="col">From</th>
+      <th scope="col">To</th>
+      <th scope="col">Working Hours</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+        <td>{Date}</td>
+      <td>{From}</td>
+      <td>{To}</td>
+      <td>{Working Hours}</td>
+    </tr>
+  </tbody>
+</table>
+
+
+{% endblock content %}

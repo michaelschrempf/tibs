@@ -83,3 +83,27 @@ class DashboardView(LoginRequiredMixin, TemplateView):
         context['employee'] = employee
 
         return context
+
+
+class MyBookingsView(LoginRequiredMixin, TemplateView):
+    template_name = "accounts/mybookings.html"
+
+    def get_context_data(self, *args, **kwargs):
+        context = super(MyBookingsView, self).get_context_data(*args, **kwargs)
+        employee = Employee.objects.filter(user = self.request.user)[0]
+
+        if Transaction.objects.filter(employee=employee).count() > 0:
+            transactions_come = Transaction.objects.filter(employee=employee,
+                                                           booking__name="Kommen").order_by('-timestamp')
+
+        for transaction_come in transactions_come:
+            transaction_end = Transaction.objects.filter(employee=employee, booking__name="Gehen",
+                                                         timestamp__gte=transaction_come.timestamp)[0]
+
+            
+
+
+
+        context['employee'] = employee
+
+        return context
